@@ -8,39 +8,39 @@ const productSchema = new mongoose.Schema(
             required: true,
             maxlength: 32
         },
+        description: {
+            type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
+            required: true,
+        },
+        condition: {
+            type: String,
+            enum: ['New', 'Good', 'Decent', 'Damaged'],
+            required: true,
+        },
         author: {
             type: ObjectId,
-            
-        }
-
+            required: true,
+        },
+        category: {
+            type: ObjectId,
+            ref: 'Category',
+            required: true,
+        },
+        images: {
+            type: Array,
+            default: [],
+        },
+        location: {
+            type: String,
+            required: true,
+        },
     },
     { timestamps: true }
 );
 
-// virtual field
-userSchema
-    .virtual('password')
-    .set(function(password) {
-        this._password = password;
-        this.hashed_password = this.encryptPassword(password);
-    })
-    .get(function() {
-        return this._password;
-    });
-
-userSchema.methods = {
-    authenticate: function(plainText) {
-        return this.encryptPassword(plainText) === this.hashed_password;
-    },
-
-    encryptPassword: function(password) {
-        if (!password) return '';
-        try {
-            return bcrypt(password, 10);
-        } catch (err) {
-            return '';
-        }
-    }
-};
 
 module.exports = mongoose.model('Product', productSchema);
