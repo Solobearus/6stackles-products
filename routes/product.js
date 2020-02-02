@@ -10,7 +10,7 @@ const { deleteProductById, deleteProductByAuthorId } = require('../controllers/p
 // CRUD routes
 
 // *Create*
-router.post('/products', createProduct);
+router.post('/product', createProduct);
 router.post('/product/:productId/images', addImage);
 
 // *Read*

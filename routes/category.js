@@ -10,7 +10,7 @@ const { deleteCategoryById } = require('../controllers/category/delete');
 // CRUD routes
 
 // *Create*
-router.post('/categories', createCategory);
+router.post('/category', createCategory);
 
 // *Read*
 router.get('/categories', getAllCategories);

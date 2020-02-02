@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const Category = require('../../models/category');
 
 exports.updateProduct = (req, res) => {
     const allowedFields = [

@@ -1,4 +1,4 @@
-const Category = require('../models/category');
+const Category = require('../../models/category');
 
 exports.deleteCategoryById = (req, res) => {
     const { categoryId } = req.params;
