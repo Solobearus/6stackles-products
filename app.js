@@ -4,8 +4,18 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var productRouter = require('./routes/product');
 var categoryRouter = require('./routes/category');
+var mongoose = require('mongoose');
+
+require('dotenv').config();
 
 var app = express();
+
+mongoose
+    .connect(process.env.DATABASE, {
+        useNewUrlParser: true,
+        useCreateIndex: true
+    })
+    .then(() => console.log('DB Connected doc'));
 
 app.use(logger('dev'));
 app.use(express.json());

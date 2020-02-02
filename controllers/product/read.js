@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const Category = require('../../models/category');
 
 exports.getAllProducts = async (req, res) => {
     const products = await Product.find({});
