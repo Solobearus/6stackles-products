@@ -22,11 +22,11 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         author: {
-            type: ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
         category: {
-            type: ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
             required: true,
         },

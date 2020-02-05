@@ -25,4 +25,5 @@ exports.updateCategory = (req, res) => {
                 res.status(200).send({ msg: 'Category updated successfully.' });
             });
         })
+        .catch(err => res.status(404).send({ err: 'No categories found using this ID.' }))
 };

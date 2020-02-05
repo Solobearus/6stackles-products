@@ -1,4 +1,4 @@
-const Category = require('../../models/category');
+const Product = require('../../models/product');
 
 exports.updateProduct = (req, res) => {
     const allowedFields = [
@@ -36,7 +36,7 @@ exports.addImage = (req, res) => {
     Product.findOne({ _id: req.params.productId })
         .then(product => {
 
-            product[key].push(req.body.image);
+            product.images.push(req.body.image);
 
             product.save((err) => {
                 if (err) {
@@ -51,7 +51,7 @@ exports.removeImage = (req, res) => {
     Product.findOne({ _id: req.params.productId })
         .then(product => {
 
-            list.splice(list.indexOf(req.params.image), 1);
+            product.images.splice(product.images.indexOf(req.params.image), 1);
 
             product.save((err) => {
                 if (err) {

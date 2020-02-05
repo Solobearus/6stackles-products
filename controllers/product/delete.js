@@ -1,4 +1,4 @@
-const Category = require('../../models/category');
+const Product = require('../../models/product');
 
 exports.deleteProductById = (req, res) => {
     const { productId } = req.params;
