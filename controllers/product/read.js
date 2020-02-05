@@ -1,7 +1,10 @@
 const Product = require('../../models/product');
 
 exports.getProductsByQuery = async (req, res) => {
-    const products = await Product.find({});
+    const { name, category, price, location, condition } = params = req.query;
+    const query = await getQueryFromParams(params);
+    const products = await Product.find(query);
+
     if (!products) {
         return res.status(400).json({
             error: 'There aren\'t any products in the database.'
@@ -23,26 +26,20 @@ exports.getProductById = (req, res) => {
     });
 };
 
-// exports.getProductsByCategoryId = (req, res) => {
-//     const { categoryId } = req.params;
-//     const { skip, limit } = req.query;
+getQueryFromParams = async (params) => {
+    let query;
+    if(Object.entries(params).length !== 0) {
+        query = {
+            $and: [
 
-//     const query = Product.findOne({ category: categoryId });
-
-//     // Chain skip
-//     if (skip != undefined)             // purely since 0 is "falsey"
-//       query = query.skip(parseInt(skip));
-
-//     // Chain limit
-//     if (limit != undefined)
-//       query = query.limit(parseInt(limit));
-
-//     query.exec((err, products) => {
-//         if (err || !products) {
-//             return res.status(400).json({
-//                 error: 'This category currently does not contain any products.'
-//             });
-//         }
-//         return res.json(products);
-//     });
-// };
+            ]
+        }
+        for(let key in params) {
+            if(key) {
+                await query.$and.push({ [key]: params[key] });
+            }
+        }
+        return query;
+    }
+    return {};
+}
