@@ -1,4 +1,4 @@
-const Category = require('../../models/category');
+const Product = require('../../models/product');
 
 exports.createProduct = (req, res) => {
     const product = new Product(req.body);
