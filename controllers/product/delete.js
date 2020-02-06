@@ -5,19 +5,21 @@ exports.deleteProductById = (req, res) => {
     Product.findByIdAndRemove({ _id: productId })
         .then(result => {
             result ?
-                res.status(200).send({ msg: 'Product deleted successfully.' }) :
-                res.status(500).send({ err: 'No products found using this ID.' });
+                res.status(200).json({ msg: 'Product deleted successfully.' }) :
+                res.status(500).json({ err: 'No products found using this ID.' });
         })
-        .catch(err => res.status(500).send(err));
+        .catch(err => res.status(500).json({ err: 'No products found using this ID.' }));
 };
 
 exports.deleteProductByAuthorId = (req, res) => {
+    console.log('test');
+    
     const { authorId } = req.params;
     Product.deleteMany({ author: authorId })
         .then(result => {
             result ?
-                res.status(200).send({ msg: 'Products deleted successfully.' }) :
-                res.status(500).send({ err: 'This user hasn\'t created any products.' });
+                res.status(200).json({ msg: 'Products deleted successfully.' }) :
+                res.status(500).json({ err: 'This user hasn\'t created any products.' });
         })
-        .catch(err => res.status(500).send(err));
+        .catch(err => res.status(500).json({ err: 'No products found using this AuthorId.' }));
 };

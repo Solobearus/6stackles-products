@@ -51,7 +51,7 @@ exports.removeImage = (req, res) => {
     Product.findOne({ _id: req.params.productId })
         .then(product => {
 
-            product.images.splice(product.images.indexOf(req.params.image), 1);
+            product.images.splice(product.images.indexOf(req.body.image), 1);
 
             product.save((err) => {
                 if (err) {

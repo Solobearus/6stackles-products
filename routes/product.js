@@ -10,19 +10,19 @@ const { deleteProductById, deleteProductByAuthorId } = require('../controllers/p
 // CRUD routes
 
 // *Create*
-router.post('/product', createProduct);
+router.post('/products', createProduct);
 
 // *Read*
 router.get('/products', getProductsByQuery);
-router.get('/product/:productId', getProductById);
+router.get('/products/:productId', getProductById);
 
 // *Update*
-router.put('/product/:productId', updateProduct);
-router.put('/product/:productId/image', addImage);
-router.put('/product/:productId/deleteImage', removeImage);
+router.put('/products/:productId', updateProduct);
+router.put('/products/:productId/image', addImage);
+router.put('/products/:productId/deleteImage', removeImage);
 
 // *Delete*
 router.delete('/products/', deleteProductByAuthorId);
-router.delete('/product/:productId', deleteProductById);
+router.delete('/products/:productId', deleteProductById);
 
 module.exports = router;
