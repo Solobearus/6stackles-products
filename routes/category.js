@@ -10,16 +10,16 @@ const { deleteCategoryById } = require('../controllers/category/delete');
 // CRUD routes
 
 // *Create*
-router.post('/category', createCategory);
+router.post('/categories', createCategory);
 
 // *Read*
 router.get('/categories', getAllCategories);
-router.get('/category/:categoryId', getCategoryById);
+router.get('/categories/:categoryId', getCategoryById);
 
 // *Update*
-router.put('/category/:categoryId', updateCategory);
+router.put('/categories/:categoryId', updateCategory);
 
 // *Delete*
-router.delete('/category/:categoryId', deleteCategoryById);
+router.delete('/categories/:categoryId', deleteCategoryById);
 
 module.exports = router;
