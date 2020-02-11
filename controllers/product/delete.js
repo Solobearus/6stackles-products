@@ -1,8 +1,9 @@
 const Product = require('../../models/product');
 
 exports.deleteProductById = (req, res) => {
-    const { productId } = req.params;
-    Product.findByIdAndRemove({ _id: productId })
+    const { productId, userId } = req.params;
+
+    Product.findByIdAndRemove({ _id: productId, author: userId })
         .then(result => {
             result ?
                 res.status(200).json({ msg: 'Product deleted successfully.' }) :
@@ -12,10 +13,8 @@ exports.deleteProductById = (req, res) => {
 };
 
 exports.deleteProductByAuthorId = (req, res) => {
-    console.log('test');
-    
-    const { authorId } = req.params;
-    Product.deleteMany({ author: authorId })
+    const { userId } = req.params;
+    Product.deleteMany({ author: userId })
         .then(result => {
             result ?
                 res.status(200).json({ msg: 'Products deleted successfully.' }) :

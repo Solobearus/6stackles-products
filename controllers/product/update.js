@@ -18,7 +18,7 @@ exports.updateProduct = (req, res) => {
         }
     });
 
-    Product.findOne({ _id: req.params.productId })
+    Product.findOne({ _id: req.params.productId, author: req.body.userId })
         .then(product => {
             Object.keys(fieldsToUpdate).forEach(key => {
                 product[key] = fieldsToUpdate[key];
@@ -30,10 +30,13 @@ exports.updateProduct = (req, res) => {
                 res.status(200).send({ msg: 'Product updated successfully.' });
             });
         })
+        .catch(err => res.status(500).json({ err: 'This product does not belong to your userID.' }));
+
 };
 
 exports.addImage = (req, res) => {
-    Product.findOne({ _id: req.params.productId })
+    
+    Product.findOne({ _id: req.params.productId, author: req.body.userId })
         .then(product => {
 
             product.images.push(req.body.image);
@@ -45,10 +48,11 @@ exports.addImage = (req, res) => {
                 res.status(200).send({ msg: 'Product updated successfully.' });
             });
         })
+        .catch(err => res.status(500).json({ err: 'This product does not belong to your userID.' }));
 };
 
 exports.removeImage = (req, res) => {
-    Product.findOne({ _id: req.params.productId })
+    Product.findOne({ _id: req.params.productId, author: req.body.userId })
         .then(product => {
 
             product.images.splice(product.images.indexOf(req.body.image), 1);
@@ -60,4 +64,5 @@ exports.removeImage = (req, res) => {
                 res.status(200).send({ msg: 'Product updated successfully.' });
             });
         })
+        .catch(err => res.status(500).json({ err: 'This product does not belong to your userID.' }));
 };
