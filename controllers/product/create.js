@@ -2,7 +2,7 @@ const Product = require('../../models/product');
 
 exports.createProduct = async (req, res) => {
 
-    
+
     const {
         name,
         description,
@@ -29,6 +29,7 @@ exports.createProduct = async (req, res) => {
         if (err) {
             return res.status(400).json({ err });
         }
-        res.status(201).json({ msg: 'Product created successfully' });
+
+        res.status(201).json({ msg: 'Product created successfully', _id: user._id });
     });
 };
