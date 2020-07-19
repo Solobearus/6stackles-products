@@ -15,7 +15,7 @@ router.post('/products', createProduct);
 // *Read*
 router.get('/products', getProductsByQuery);
 router.get('/products/:productId', getProductById);
-router.get('/products/:userId', getProductByAuthorId);
+router.get('/products/getProductByAuthorId/:authorId', getProductByAuthorId);
 
 // *Update*
 router.put('/products/:productId', updateProduct);
