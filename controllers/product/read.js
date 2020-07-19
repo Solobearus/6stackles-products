@@ -26,16 +26,30 @@ exports.getProductById = (req, res) => {
     });
 };
 
+exports.getProductByAuthorId = (req, res) => {
+    const { authorId } = req.params;
+
+    Product.find({ author: authorId }, (err, product) => {
+        if (err || !product) {
+            return res.status(400).json({
+                error: 'Products with this AuthorId does not exist'
+            });
+        }
+        return res.json(product);
+    });
+};
+
+
 getQueryFromParams = async (params) => {
     let query;
-    if(Object.entries(params).length !== 0) {
+    if (Object.entries(params).length !== 0) {
         query = {
             $and: [
 
             ]
         }
-        for(let key in params) {
-            if(key) {
+        for (let key in params) {
+            if (key) {
                 await query.$and.push({ [key]: params[key] });
             }
         }
@@ -43,3 +57,7 @@ getQueryFromParams = async (params) => {
     }
     return {};
 }
+
+
+
+
