@@ -3,7 +3,7 @@ const router = express.Router();
 
 // CRUD controllers
 const { createProduct } = require('../controllers/product/create');
-const { getProductsByQuery, getProductById } = require('../controllers/product/read');
+const { getProductsByQuery, getProductById, getProductByAuthorId } = require('../controllers/product/read');
 const { updateProduct, addImage, removeImage } = require('../controllers/product/update');
 const { deleteProductById, deleteProductByAuthorId } = require('../controllers/product/delete');
 
@@ -15,6 +15,7 @@ router.post('/products', createProduct);
 // *Read*
 router.get('/products', getProductsByQuery);
 router.get('/products/:productId', getProductById);
+router.get('/products/:userId', getProductByAuthorId);
 
 // *Update*
 router.put('/products/:productId', updateProduct);
