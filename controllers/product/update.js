@@ -5,6 +5,7 @@ exports.updateProduct = (req, res) => {
         'name',
         'description',
         'price',
+        'images',
         'condition',
         'category',
         'location'
