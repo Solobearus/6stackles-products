@@ -10,6 +10,7 @@ exports.createProduct = async (req, res) => {
         condition,
         category,
         location,
+        images,
         userId: author
     } = req.body;
 
@@ -19,6 +20,7 @@ exports.createProduct = async (req, res) => {
         price,
         condition,
         category,
+        images,
         location,
         author
     }
