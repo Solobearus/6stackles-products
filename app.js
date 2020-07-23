@@ -6,15 +6,15 @@ var logger = require('morgan');
 var productRouter = require('./routes/product');
 var categoryRouter = require('./routes/category');
 var mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 
 var app = express();
 mongoose
-    .connect(process.env.DATABASE, {
-        useNewUrlParser: true,
-        useCreateIndex: true
-    })
-    .then(() => console.log('DB Connected doc successfully'));
+.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+})
+.then(() => console.log('DB Connected doc successfully'));
 
 app.use(logger('dev'));
 app.use(express.json());
