@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 // CRUD controllers
-const { createProduct } = require('../controllers/product/create');
+const { createProduct, createProductWithImageUploadToS3 } = require('../controllers/product/create');
 const { getProductsByQuery, getProductById, getProductByAuthorId } = require('../controllers/product/read');
 const { updateProduct, addImage, removeImage } = require('../controllers/product/update');
 const { deleteProductById, deleteProductByAuthorId } = require('../controllers/product/delete');
@@ -11,6 +13,7 @@ const { deleteProductById, deleteProductByAuthorId } = require('../controllers/p
 
 // *Create*
 router.post('/products', createProduct);
+router.post('/createProductWithImageUploadToS3', createProductWithImageUploadToS3);
 
 // *Read*
 router.get('/products', getProductsByQuery);
