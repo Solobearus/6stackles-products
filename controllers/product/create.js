@@ -3,6 +3,10 @@ const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3')
 
+
+console.log('process.env.AWS_ACCESS_KEY_ID');
+console.log(process.env.AWS_ACCESS_KEY_ID);
+
 const s3 = new aws.S3({
     apiVersion: '2006-03-01',
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -14,6 +18,7 @@ const uploadS3 = multer({
         s3: s3,
         acl: 'public-read',
         bucket: process.env.S3_BUCKET,
+        contentType: multerS3.AUTO_CONTENT_TYPE,
         metadata: function (req, file, cb) {
             cb(null, { fieldName: file.fieldname });
         },
