@@ -22,7 +22,7 @@ router.get('/products/getProductByAuthorId/:authorId', getProductByAuthorId);
 router.put('/products/:productId', updateProduct);
 router.put('/products/:productId/image', addImage);
 router.put('/products/:productId/deleteImage', removeImage);
-router.post('/updateProductWithImageUploadToS3', updateProductWithImageUploadToS3);
+router.put('/updateProductWithImageUploadToS3', updateProductWithImageUploadToS3);
 
 // *Delete*
 router.delete('/products/', deleteProductByAuthorId);

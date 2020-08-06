@@ -84,20 +84,12 @@ exports.updateProductWithImageUploadToS3 = async (req, res) => {
             } else {
                 // If Success
                 let fileArray = req.files;
-                console.log('req.body._id');
-                console.log(req.body._id);
                 Product.findOne({ _id: req.body._id })
                     .then(product => {
                         const images = [null, null, null, null];
                         for (let i = 0; i < fileArray.length; i++) {
                             images[i] = fileArray[i].key;
                         }
-                        console.log('images');
-                        console.log(images);
-                        
-                        product.images = images;
-                        console.log('product');
-                        console.log(product);
 
                         product.save((err) => {
                             if (err) {
