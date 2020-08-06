@@ -10,11 +10,11 @@ const bodyParser = require('body-parser');
 
 var app = express();
 mongoose
-.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useCreateIndex: true
-})
-.then(() => console.log('DB Connected doc successfully'));
+    .connect(process.env.DATABASE, {
+        useNewUrlParser: true,
+        useCreateIndex: true
+    })
+    .then(() => console.log('DB Connected doc successfully'));
 
 app.use(logger('dev'));
 app.use(express.json());
